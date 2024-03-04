@@ -99,7 +99,8 @@ public class carteraTest {
     @Test
     void testRetiradanoMaximo6000(){
         Cuenta c = new Cuenta();
-        c.ingresar(7000);
+        c.ingresar(5000);
+        c.ingresar(2000);
         c.retirar(6000);
         assertEquals(1000, c.getSaldo());
     }
@@ -107,7 +108,8 @@ public class carteraTest {
     @Test
     void testRetiradanoMaximo600con001(){
         Cuenta c = new Cuenta();
-        c.ingresar(7000);
+        c.ingresar(5000);
+        c.ingresar(2000);
         c.retirar(6000.001);
         assertEquals(7000, c.getSaldo());
     }

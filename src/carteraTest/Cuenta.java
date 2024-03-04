@@ -3,6 +3,9 @@ package carteraTest;
 public class Cuenta {
 
     double saldo;
+    double K_IngresoMax = 6000;
+    double K_RetiradaMax = 6000;
+    double K_TransfMax = 3000;
 
     public Cuenta(){
         this.saldo = 0;
@@ -14,17 +17,13 @@ public class Cuenta {
     }
 
     public void ingresar(double cantidad) {
+        if (cantidad > 0 && cantidad <= K_IngresoMax){
         saldo += cantidad;
-        if (cantidad == -100){
-            saldo = 0;
-        }
-        if (cantidad == 6000.01){
-            saldo = 0;
         }
     }
 
     public void retirar(double cantidad) {
-        if (cantidad > 0 && cantidad <=6000) {
+        if (cantidad > 0 && cantidad <= K_RetiradaMax) {
             if (cantidad <= saldo) {
                 saldo -= cantidad;
             }
@@ -32,7 +31,7 @@ public class Cuenta {
     }
 
     public void transferencia(Cuenta destino, double cantidad){
-        if (cantidad > 0 && cantidad <= 3000) {
+        if (cantidad > 0 && cantidad <= K_TransfMax) {
             retirar(cantidad);
             destino.ingresar(cantidad);
         }
